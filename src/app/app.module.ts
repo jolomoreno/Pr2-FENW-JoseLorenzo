@@ -4,19 +4,25 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { HeaderComponent } from './layouts/header/header.component';
-import { MasterComponent } from './layouts/master/master.component';
+import { ServiciosComponent } from './layouts/servicios/servicios.component';
+import { HomeComponent } from './layouts/home/home.component';
+import { InstalacionesComponent } from './layouts/instalaciones/instalaciones.component';
+import { RootComponent } from './layouts/root/root.component';
 
 @NgModule({
   declarations: [
-    FooterComponent,
     HeaderComponent,
-    MasterComponent
+    FooterComponent,
+    HomeComponent,
+    ServiciosComponent,
+    InstalacionesComponent,
+    RootComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [MasterComponent]
+  bootstrap: [RootComponent]
 })
 export class AppModule { }
