@@ -8,6 +8,7 @@ import { ServiciosComponent } from './layouts/servicios/servicios.component';
 import { HomeComponent } from './layouts/home/home.component';
 import { InstalacionesComponent } from './layouts/instalaciones/instalaciones.component';
 import { RootComponent } from './layouts/root/root.component';
+import { RegistroComponent } from './layouts/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RootComponent } from './layouts/root/root.component';
     HomeComponent,
     ServiciosComponent,
     InstalacionesComponent,
-    RootComponent
+    RootComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
