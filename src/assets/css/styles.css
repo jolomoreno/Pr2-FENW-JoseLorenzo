@@ -1,0 +1,204 @@
+/* stylelint-disable property-no-vendor-prefix */
+
+/*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Custom default button */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100%;
+  background-color: #333;
+}
+body {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+  font-family: 'Raleway', sans-serif;
+}
+
+/*
+ * Header
+ */
+
+#upmlogo {
+  height:70px;
+  display:inline;
+  border-radius: 8px;
+}
+
+.masthead-brand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float: left;
+  padding: 15px 15px;
+  font-size: 18px;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff; /* IE8 proofing */
+  color: rgba(255, 255, 255, .75);
+  border-bottom: 2px solid transparent;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+  border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+/*
+ * Home
+ */
+.active {
+  color: white!important;
+  border-bottom: 2px solid rgba(255, 255, 255)!important;
+}
+
+.section-table {
+  display: table;
+  margin: 0 auto;
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px 0px 0px 15px;
+}
+
+.img-clases {
+  border-radius: 10px;
+  border:1px solid black;
+}
+
+.img-background {
+  background: url('../img/red.jpg') no-repeat;
+  background-size: cover;
+  color:white;
+  border:1px solid black;
+  border-radius: 10px;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+}
+
+/*
+ * Servicios
+ */
+#servicios {}
+
+/*
+ * Instalaciones
+ */
+
+#instalaciones {}
+
+.mapouter{
+  text-align: right;
+  height: 500px;
+  margin-bottom: 15px;
+}
+
+.gmap_canvas{
+  overflow: hidden;
+  background: none!important;
+}
+/*
+ * Registro
+ */
+#registro {}
+
+/*
+ * Login
+ */
+
+#login {}
+
+#inputUser, #inputPassword, #emptyUser, #emptyPassword, #wrongUserPassword{
+  width: 350px;
+  margin: 0 auto;
+}
+
+#emptyUser, #emptyPassword, #wrongUserPassword{
+  line-height: 2px;
+  height: 34px;
+}
+
+
+#btnLogin, #btnRegistro {
+  margin-top: 20px;
+}
+
+/*
+ * Footer
+ */
+footer {
+  color: rgba(255, 255, 255, .75);
+  width: 100%;
+  height: 40px; /* Set the fixed height of the footer here */
+}
+
+/*
+ * Media Queries
+ */
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+    margin-top: 36px;
+    margin-bottom: 10px;
+  }
+  .img-background {
+    padding-top: 65px;
+    padding-bottom: 200px;
+  }
+}
+
+@media (max-width: 765px) {
+  .img-background {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .masthead-brand {
+    margin: 10px 30%;
+  }
+
+  #upmlogo {
+    margin-bottom: 10px;
+  }
+
+  #inputUser, #inputPassword, #emptyUser, #emptyPassword, #wrongUserPassword {
+    width: 100%;
+  }
+}
