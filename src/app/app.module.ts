@@ -1,14 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FooterComponent } from './layouts/footer/footer.component';
-import { HeaderComponent } from './layouts/header/header.component';
-import { ServiciosComponent } from './layouts/servicios/servicios.component';
-import { HomeComponent } from './layouts/home/home.component';
-import { InstalacionesComponent } from './layouts/instalaciones/instalaciones.component';
-import { RootComponent } from './layouts/root/root.component';
-import { RegistroComponent } from './layouts/registro/registro.component';
+import { FooterComponent } from './modules/footer/footer.component';
+import { HeaderComponent } from './modules/header/header.component';
+import { ServiciosComponent } from './modules/servicios/servicios.component';
+import { HomeComponent } from './modules/home/home.component';
+import { InstalacionesComponent } from './modules/instalaciones/instalaciones.component';
+import { RootComponent } from './modules/root/root.component';
+import { RegistroComponent } from './modules/registro/registro.component';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { RegistroComponent } from './layouts/registro/registro.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
