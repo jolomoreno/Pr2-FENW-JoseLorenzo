@@ -7,33 +7,26 @@
     <p class="lead text-justify">Ab aut eos eum incidunt ipsa iure, nulla quam, quis recusandae reiciendis sint sit tempore voluptates. Ab alias deleniti dolorem inventore laborum molestias nobis odio, quibusdam repellat sapiente totam voluptates.</p>
     <form class="form-signin" #formRegistro="ngForm" (submit)="onSubmit(formRegistro)">
       <div class="row">
-        <div class="col-md-4 col-md-offset-1 col-sm-6">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
           <label for="username" class="sr-only">Usuario</label>
-          <input type="text" id="username" name="username" [(ngModel)]="user.username" #username="ngModel"  class="form-control" placeholder="Usuario" required autofocus>
-        </div>
-        <div class="col-md-4 col-md-offset-2 col-sm-6">
-          <label for="email" class="sr-only">Password</label>
-          <input type="password" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control" placeholder="Password" required>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 col-md-offset-1 col-sm-6">
-          <label for="inptEmail" class="sr-only">Email address</label>
-          <input type="text" id="inptEmail" name="inptPassword" class="form-control"  placeholder="Email" required>
-        </div>
-        <div class="col-md-4 col-md-offset-2 col-sm-6">
-          <label for="inptPasswordAgain" class="sr-only">Repita el password</label>
-          <input type="password" id="inptPasswordAgain" name="inptPasswordAgain" class="form-control" placeholder="Repita el password" required>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 col-md-offset-1 col-sm-6">
-          <label for="inptBirthday" class="sr-only">Fecha de nacimiento</label>
-          <input type="date" id="inptBirthday" name="inptBirthday" class="form-control datepicker" placeholder="Fecha de nacimiento">
+          <input type="text" id="username" name="username" [(ngModel)]="user.username" #username="ngModel" (blur)="checkUsername()" class="form-control" placeholder="Usuario" required autofocus>
+          <div *ngIf="username.touched && username.invalid" id="user-reg-required" class="alert alert-danger">Usuario requerido</div>
+          <label for="password" class="sr-only">Password</label>
+          <input type="password" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" class="form-control" placeholder="Password" required>
+          <div *ngIf="password.touched && password.invalid" id="password-reg-required" class="alert alert-danger">Password requerida</div>
+          <label for="passwordRepeated" class="sr-only">Repita el password</label>
+          <input type="password" id="passwordRepeated" name="passwordRepeated" [(ngModel)]="user.passwordRepeated" #passwordRepeated="ngModel" class="form-control" placeholder="Repita password" required>
+          <div *ngIf="passwordRepeated.touched && passwordRepeated.invalid" id="password-bis-reg-required" class="alert alert-danger">Password requerida</div>
+          <!-- <div *ngIf="passwordRepeated !== password" id="password-result-reg-required" class="alert alert-danger">Las passwords no coinciden</div> -->
+          <label for="email" class="sr-only">Email address</label>
+          <input type="text" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control"  placeholder="Email" required>
+          <div *ngIf="email.touched && email.invalid" id="email-reg-required" class="alert alert-danger">Email requerido</div>
+          <label for="birthdate" class="sr-only">Fecha de nacimiento</label>
+          <input type="date" id="birthdate" name="birthdate" [(ngModel)]="user.birthdate" #birthdate="ngModel" class="form-control datepicker" placeholder="Fecha de nacimiento">
         </div>
       </div>
       <div class="row">
-        <button id="btnRegistro" class="btn btn-lg btn-primary btn-md" type="submit">Enviar</button>
+        <button id="btnRegistro" [disabled]="!formRegistro.form.valid" class="btn btn-lg btn-primary btn-md" type="submit">Enviar</button>
       </div>
     </form>
   </div>

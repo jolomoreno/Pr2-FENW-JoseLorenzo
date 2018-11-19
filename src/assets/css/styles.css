@@ -39,6 +39,10 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.prueba {
+  color: red;
+}
+
 /*
  * Header
  */
@@ -142,12 +146,17 @@ body {
 
 #login {}
 
-#inputUser, #inputPassword, #emptyUser, #emptyPassword, #wrongUserPassword{
+#inputUser, #inputPassword, #wrongUserPassword{
   width: 350px;
   margin: 0 auto;
 }
 
-#emptyUser, #emptyPassword, #wrongUserPassword{
+#user-reg-required,
+#password-reg-required,
+#email-reg-required,
+#password-bis-reg-required,
+#password-result-reg-required
+{
   line-height: 2px;
   height: 34px;
 }
@@ -198,7 +207,7 @@ footer {
     margin-bottom: 10px;
   }
 
-  #inputUser, #inputPassword, #emptyUser, #emptyPassword, #wrongUserPassword {
+  #inputUser, #inputPassword, #wrongUserPassword {
     width: 100%;
   }
 }
