@@ -19,7 +19,7 @@
           <div *ngIf="passwordRepeated.touched && passwordRepeated.invalid" id="password-bis-reg-required" class="alert alert-danger">Password requerida</div>
           <!-- <div *ngIf="passwordRepeated !== password" id="password-result-reg-required" class="alert alert-danger">Las passwords no coinciden</div> -->
           <label for="email" class="sr-only">Email address</label>
-          <input type="text" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control"  placeholder="Email" required>
+          <input type="email" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control"  placeholder="Email" required>
           <div *ngIf="email.touched && email.invalid" id="email-reg-required" class="alert alert-danger">Email requerido</div>
           <label for="birthdate" class="sr-only">Fecha de nacimiento</label>
           <input type="date" id="birthdate" name="birthdate" [(ngModel)]="user.birthdate" #birthdate="ngModel" class="form-control datepicker" placeholder="Fecha de nacimiento">

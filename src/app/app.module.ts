@@ -3,23 +3,23 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FooterComponent } from './modules/footer/footer.component';
-import { HeaderComponent } from './modules/header/header.component';
-import { ServiciosComponent } from './modules/servicios/servicios.component';
-import { HomeComponent } from './modules/home/home.component';
-import { InstalacionesComponent } from './modules/instalaciones/instalaciones.component';
-import { RootComponent } from './modules/root/root.component';
-import { RegistroComponent } from './modules/registro/registro.component';
+import { FooterComponent } from './components/root/modules/footer/footer.component';
+import { HeaderComponent } from './components/root/modules/header/header.component';
+import { ServiciosComponent } from './components/servicios/servicios.component';
+import { HomeComponent } from './components/home/home.component';
+import { InstalacionesComponent } from './components/instalaciones/instalaciones.component';
+import { RootComponent } from './components/root/root.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
   declarations: [
+    RootComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
     ServiciosComponent,
     InstalacionesComponent,
-    RootComponent,
     RegistroComponent
   ],
   imports: [

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent} from './modules/home/home.component';
-import { ServiciosComponent } from './modules/servicios/servicios.component';
-import { InstalacionesComponent } from './modules/instalaciones/instalaciones.component';
-import { RegistroComponent } from './modules/registro/registro.component';
+import { HomeComponent} from './components/home/home.component';
+import { ServiciosComponent } from './components/servicios/servicios.component';
+import { InstalacionesComponent } from './components/instalaciones/instalaciones.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
