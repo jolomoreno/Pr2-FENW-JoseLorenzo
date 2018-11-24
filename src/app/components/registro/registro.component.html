@@ -5,28 +5,57 @@
     <p class="lead text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolores eligendi illum in incidunt nisi nulla numquam, provident totam voluptatem?
       Consequuntur cum ex illo mollitia nihil optio reprehenderit. Consequatur, fugit.</p>
     <p class="lead text-justify">Ab aut eos eum incidunt ipsa iure, nulla quam, quis recusandae reiciendis sint sit tempore voluptates. Ab alias deleniti dolorem inventore laborum molestias nobis odio, quibusdam repellat sapiente totam voluptates.</p>
-    <form class="form-signin" #formRegistro="ngForm" (submit)="onSubmit(formRegistro)">
+
+    <form class="form-signin" (ngSubmit)="onSubmit(formRegistro)" [formGroup]="formRegistro" >
       <div class="row">
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
           <label for="username" class="sr-only">Usuario</label>
-          <input type="text" id="username" name="username" [(ngModel)]="user.username" #username="ngModel" (blur)="checkUsername()" class="form-control" placeholder="Usuario" required autofocus>
-          <div *ngIf="username.touched && username.invalid" id="user-reg-required" class="alert alert-danger">Usuario requerido</div>
+          <input type="text"
+                 id="username"
+                 name="username"
+                 formControlName="username"
+                 class="form-control"
+                 placeholder="Usuario"
+                 (blur)="checkUsername(formRegistro)" >
+
           <label for="password" class="sr-only">Password</label>
-          <input type="password" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" class="form-control" placeholder="Password" required>
-          <div *ngIf="password.touched && password.invalid" id="password-reg-required" class="alert alert-danger">Password requerida</div>
+          <input type="password"
+                 id="password"
+                 name="password"
+                 formControlName="password"
+                 class="form-control"
+                 placeholder="Password">
+
           <label for="passwordRepeated" class="sr-only">Repita el password</label>
-          <input type="password" id="passwordRepeated" name="passwordRepeated" [(ngModel)]="user.passwordRepeated" #passwordRepeated="ngModel" class="form-control" placeholder="Repita password" required>
-          <div *ngIf="passwordRepeated.touched && passwordRepeated.invalid" id="password-bis-reg-required" class="alert alert-danger">Password requerida</div>
-          <!-- <div *ngIf="passwordRepeated !== password" id="password-result-reg-required" class="alert alert-danger">Las passwords no coinciden</div> -->
+          <input type="password"
+                 id="passwordRepeated"
+                 name="passwordRepeated"
+                 formControlName="passwordRepeated"
+                 class="form-control"
+                 placeholder="Repita password">
+
           <label for="email" class="sr-only">Email address</label>
-          <input type="email" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control"  placeholder="Email" required>
-          <div *ngIf="email.touched && email.invalid" id="email-reg-required" class="alert alert-danger">Email requerido</div>
+          <input type="email"
+                 id="email"
+                 name="email"
+                 formControlName="email"
+                 class="form-control"
+                 placeholder="Email" >
+
           <label for="birthdate" class="sr-only">Fecha de nacimiento</label>
-          <input type="date" id="birthdate" name="birthdate" [(ngModel)]="user.birthdate" #birthdate="ngModel" class="form-control datepicker" placeholder="Fecha de nacimiento">
+          <input type="date"
+                 id="birthdate"
+                 name="birthdate"
+                 formControlName="birthdate"
+                 class="form-control datepicker"
+                 placeholder="Fecha de nacimiento" >
+
+          <div *ngIf="usernameDuplicated" id="user-reg-required" class="alert alert-danger">Usuario repetido, inserte otro</div>
+          <div *ngIf="!passwordsDuplicated" id="password-result-reg-required" class="alert alert-danger">Las passwords no coinciden</div>
         </div>
       </div>
       <div class="row">
-        <button id="btnRegistro" [disabled]="!formRegistro.form.valid" class="btn btn-lg btn-primary btn-md" type="submit">Enviar</button>
+        <button id="btnRegistro" type="submit" [disabled]="formRegistro.invalid" class="btn btn-lg btn-primary btn-md" >Enviar</button>
       </div>
     </form>
   </div>
