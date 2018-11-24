@@ -12,6 +12,8 @@ import { RootComponent } from './root/root.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { LoginService } from './shared/services/login.service';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [RootComponent]
 })
 export class AppModule { }

@@ -167,6 +167,13 @@ body {
 }
 
 /*
+ * Logout
+ */
+#logoutLink{
+  cursor: pointer;
+}
+
+/*
  * Footer
  */
 footer {
