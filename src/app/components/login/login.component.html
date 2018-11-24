@@ -1,0 +1,36 @@
+<section id="login" class="">
+  <div class="container">
+    <h1 class="cover-heading">Login</h1>
+    <hr>
+    <p class="lead text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolores eligendi illum in incidunt nisi nulla numquam, provident totam voluptatem?
+      Consequuntur cum ex illo mollitia nihil optio reprehenderit. Consequatur, fugit.</p>
+    <p class="lead text-justify">Ab aut eos eum incidunt ipsa iure, nulla quam, quis recusandae reiciendis sint sit tempore voluptates. Ab alias deleniti dolorem inventore laborum molestias nobis odio,
+      quibusdam repellat sapiente totam voluptates.</p>
+    <form class="form-signin" (ngSubmit)="onSubmit(formLogin)" [formGroup]="formLogin" >
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+          <label for="username" class="sr-only">User</label>
+          <input type="text"
+                 id="username"
+                 name="username"
+                 formControlName="username"
+                 class="form-control"
+                 placeholder="Usuario" autofocus>
+
+          <label for="password" class="sr-only">Password</label>
+          <input type="password"
+                 id="password"
+                 name="password"
+                 formControlName="password"
+                 class="form-control"
+                 placeholder="Password">
+
+          <div *ngIf="loginIncorrect" id="user-reg-required" class="alert alert-danger">Usuario o password incorrectos</div>
+        </div>
+      </div>
+      <div class="row">
+        <button id="btnLogin" type="submit" [disabled]="formLogin.invalid" class="btn btn-lg btn-primary btn-md" >Login</button>
+      </div>
+    </form>
+  </div>
+</section>

@@ -4,12 +4,14 @@ import { HomeComponent} from './components/home/home.component';
 import { ServiciosComponent } from './components/servicios/servicios.component';
 import { InstalacionesComponent } from './components/instalaciones/instalaciones.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'servicios', component: ServiciosComponent, pathMatch: 'full'},
   {path: 'instalaciones', component: InstalacionesComponent, pathMatch: 'full'},
   {path: 'registros', component: RegistroComponent, pathMatch: 'full'},
+  {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: '**', redirectTo: '/'}
 ];
 

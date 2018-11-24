@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { InstalacionesComponent } from './components/instalaciones/instalaciones.component';
 import { RootComponent } from './root/root.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { RegistroComponent } from './components/registro/registro.component';
     HomeComponent,
     ServiciosComponent,
     InstalacionesComponent,
-    RegistroComponent
+    RegistroComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
