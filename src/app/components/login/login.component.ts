@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
 
     if (result === 'error') {
       console.log(result, 'ERROR LOGIN');
+      this.loginIncorrect = true;
     } else {
       console.log(result, 'SUCCESS LOGIN');
       sessionStorage.setItem('token', result);

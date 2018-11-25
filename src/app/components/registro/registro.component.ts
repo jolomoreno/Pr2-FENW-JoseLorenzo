@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../shared/models/user';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegistroService } from '../../shared/services/registro.service';
 
 @Component({
   selector: 'app-registro',
@@ -11,6 +12,7 @@ export class RegistroComponent implements OnInit {
   public user: User;
   usernameDuplicated = false;
   passwordsDuplicated = true;
+  registerSuccess = false;
 
   formRegistro = new FormGroup({
     username: new FormControl('',
@@ -24,7 +26,7 @@ export class RegistroComponent implements OnInit {
     birthdate: new FormControl('2018-11-24')
   });
 
-  constructor() {
+  constructor(private regConex: RegistroService) {
     this.user = new User('', '', '', '', 0);
   }
 
@@ -40,40 +42,59 @@ export class RegistroComponent implements OnInit {
     this.user.email = formRegistroSubmitted.get('email').value;
     this.user.birthdate = formRegistroSubmitted.get('birthdate').value;
 
-    /*console.log(this.user.username, 'USERNAME-SUBMIT');
-    console.log(this.user.password, 'PASSWORD-SUBMIT');
-    console.log(this.user.passwordRepeated, 'PASSREPEATED-SUBMIT');
-    console.log(this.user.email, 'EMAIL-SUBMIT');
-    console.log(this.user.birthdate, 'BIRTHDATE-SUBMIT');*/
+    console.log(this.user.birthdate, 'BIRTHDATE');
 
-    this.checkPasswords(this.user.password, this.user.passwordRepeated, formRegistroSubmitted);
+    this.checkPasswords(this.user.password, this.user.passwordRepeated);
+    console.log(this.usernameDuplicated, 'Usuerio duplicado?');
+    console.log(this.passwordsDuplicated, 'Passwords iguales?');
+    if (!this.usernameDuplicated && this.passwordsDuplicated) {
+      console.log('HACER POST');
+      /*this.regConex.postUser(this.user).subscribe(
+        (response) => {
+          console.log(response, 'RESPUESTA');
+        },
+        (error) => {
+          console.log(error, 'ERROR');
+        }
+      );*/
+      formRegistroSubmitted.reset();
+      this.registerSuccess = true;
+    } else {
+      console.log('NO HACER POST');
+      this.registerSuccess = false;
+    }
   }
 
   checkUsername(formRegistro) {
-    /*console.log('Has hecho BLUR del input de USER');
-    console.log(formRegistro.get('username').value, 'USERNAME-BLUR');*/
-    // Buscar el username en DB
-    if (formRegistro.get('username').value === 'Paco') {
-      console.log('SON IGUALES!!!');
-      this.usernameDuplicated = true;
-    } else {
-      console.log('NO SON IGUALES!!!');
-      this.usernameDuplicated = false;
-    }
+    this.registerSuccess = false;
+    this.regConex.getAnUser(formRegistro.get('username').value).subscribe(
+      (response) => {
+          console.log(response, 'RESPUESTA');
+          this.usernameDuplicated = true;
+      },
+      (error) => {
+        console.log(error, 'ERROR');
+        this.usernameDuplicated = false;
+      }
+    );
   }
 
-  checkPasswords(password: string, passwordRepeated: string, formRegistroSubmitted: FormGroup) {
-    console.log(password, 'PASSWORD-SUBMIT');
-    console.log(passwordRepeated, 'PASSREPEATED-SUBMIT');
+  checkPasswords(password: string, passwordRepeated: string) {
     if (password === passwordRepeated) {
-      console.log('SON IGUALES!!!');
-      // formRegistroSubmitted.reset();
       this.passwordsDuplicated = true;
     } else {
-      console.log('NO SON IGUALES');
       this.passwordsDuplicated = false;
     }
-    console.log(this.passwordsDuplicated, 'passwordsDuplicated');
-
   }
+
+  /*addUser(user) {
+    this.regConex.postUser(user).subscribe(
+      (response) => {
+        console.log(response, 'RESPUESTA');
+      },
+      (error) => {
+        console.log(error, 'ERROR');
+      }
+    );
+  }*/
 }

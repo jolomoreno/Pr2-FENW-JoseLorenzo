@@ -155,7 +155,8 @@ body {
 #password-reg-required,
 #email-reg-required,
 #password-bis-reg-required,
-#password-result-reg-required
+#password-result-reg-required,
+#user-reg-success
 {
   line-height: 2px;
   height: 34px;

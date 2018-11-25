@@ -52,6 +52,7 @@
 
           <div *ngIf="usernameDuplicated" id="user-reg-required" class="alert alert-danger">Usuario repetido, inserte otro</div>
           <div *ngIf="!passwordsDuplicated" id="password-result-reg-required" class="alert alert-danger">Las passwords no coinciden</div>
+          <div *ngIf="registerSuccess" id="user-reg-success" class="alert alert-success">Usuario registrado</div>
         </div>
       </div>
       <div class="row">
