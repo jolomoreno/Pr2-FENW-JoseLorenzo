@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,11 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   doLogin(username, password) {
-    return this.http.get(this.baseurl + '/users/login?username=' + username + '&password=' + password);
+    return this.http.get(this.baseurl + '/users/login?username=' + username + '&password=' + password, {observe: 'response'})
+      .pipe(
+          tap(response => console.log(response, 'SUCCESS LOGIN'),
+        error => console.log(error, 'ERROR LOGIN'))
+      );
   }
 
   logout() {

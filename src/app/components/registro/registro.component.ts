@@ -43,12 +43,8 @@ export class RegistroComponent implements OnInit {
     this.checkPasswords(this.user.password, this.user.passwordRepeated);
     if (!this.usernameDuplicated && this.passwordsDuplicated) {
       this.regConex.postUser(this.user).subscribe(
-        (response) => {
-          console.log(response, 'RESPUESTA REGISTER');
-        },
-        (error) => {
-          console.log(error, 'ERROR REGISTER');
-        }
+        (response) => {},
+        (error) => {}
       );
       formRegistroSubmitted.reset();
       this.registerSuccess = true;
@@ -61,11 +57,9 @@ export class RegistroComponent implements OnInit {
     this.registerSuccess = false;
     this.regConex.getAnUser(formRegistro.get('username').value).subscribe(
       (response) => {
-          console.log(response, 'RESPUESTA CHECKUSER');
           this.usernameDuplicated = true;
       },
       (error) => {
-        console.log(error, 'ERROR CHECKUSER');
         this.usernameDuplicated = false;
       }
     );

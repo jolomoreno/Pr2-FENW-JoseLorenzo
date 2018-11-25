@@ -7,12 +7,10 @@ import {LoginService} from '../../../shared/services/login.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  token = '';
+
   constructor(private login: LoginService) { }
 
   ngOnInit() {
-    this.token = localStorage.getItem('token');
-    console.log(this.token, 'TOKEN');
   }
 
   logout() {

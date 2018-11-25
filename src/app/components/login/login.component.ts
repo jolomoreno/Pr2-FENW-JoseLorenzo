@@ -32,23 +32,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(formLogin: FormGroup) {
-    console.log('Has pulsado el botón de ENVIAR');
-
     this.login.username = formLogin.get('username').value;
     this.login.password = formLogin.get('password').value;
 
-
-
     this.logConex.doLogin(this.login.username, this.login.password) .subscribe(
     response => {
-      console.log(response, 'TOKEN');
       if (response) {
-        sessionStorage.setItem('token', response.toString());
+        console.log(response.headers.get('Authorization'));
+        sessionStorage.setItem('token', response.headers.get('Authorization'));
       }
       this.router.navigate(['']);
     },
     error => {
-      console.log(error, 'ERROR');
       this.loginIncorrect = true;
     });
   }
