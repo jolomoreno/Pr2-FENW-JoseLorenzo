@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Login } from '../../shared/models/login';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../../shared/services/login.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Login} from '../../shared/models/login';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {LoginService} from '../../shared/services/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -37,25 +37,22 @@ export class LoginComponent implements OnInit {
     this.login.username = formLogin.get('username').value;
     this.login.password = formLogin.get('password').value;
 
-    this.loginMethod(this.login.username, this.login.password, formLogin);
+    this.loginMethod(this.login.username, this.login.password);
+
+    console.log('PASA POR AQUI 2');
+
+    if (this.logConex.loggedIn) {
+      console.log('SUCCESS LOGIN');
+      this.router.navigate(['']);
+    } else {
+      this.loginIncorrect = true;
+    }
   }
 
-  loginMethod(username, password, formLogin) {
+  loginMethod(username, password) {
     console.log(username, 'USERNAME-SUBMIT');
     console.log(password, 'PASSWORD-SUBMIT');
-    const result = this.logConex.doLogin(username, password);
-
-    if (result === 'error') {
-      console.log(result, 'ERROR LOGIN');
-      this.loginIncorrect = true;
-    } else {
-      console.log(result, 'SUCCESS LOGIN');
-      sessionStorage.setItem('token', result);
-      this.router.navigate(['/']);
-    }
-    /*this.logConex.doLogin(username, password).subscribe(
-      (token: string) => {this.bearerToken = token; this.found = true; },
-      (error) => {this.found = false; }
-    );*/
+    this.logConex.doLogin(username, password);
+    console.log('PASA POR AQUI 1');
   }
 }

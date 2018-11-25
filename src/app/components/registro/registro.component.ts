@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from '../../shared/models/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegistroService } from '../../shared/services/registro.service';
@@ -13,7 +13,6 @@ export class RegistroComponent implements OnInit {
   usernameDuplicated = false;
   passwordsDuplicated = true;
   registerSuccess = false;
-  today : Date;
 
   formRegistro = new FormGroup({
     username: new FormControl('',
@@ -30,8 +29,6 @@ export class RegistroComponent implements OnInit {
   constructor(private regConex: RegistroService) {
     this.user = new User('', '', '', '', 0);
   }
-
-  get f() { return this.formRegistro.controls; }
 
   ngOnInit() {}
 
@@ -75,10 +72,11 @@ export class RegistroComponent implements OnInit {
   }
 
   checkPasswords(password: string, passwordRepeated: string) {
-    if (password === passwordRepeated) {
-      this.passwordsDuplicated = true;
-    } else {
-      this.passwordsDuplicated = false;
-    }
+    this.passwordsDuplicated = password === passwordRepeated;
   }
+
+  OnDestroy() {
+
+  }
+
 }
