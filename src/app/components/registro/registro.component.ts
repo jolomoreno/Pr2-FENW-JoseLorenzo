@@ -13,6 +13,7 @@ export class RegistroComponent implements OnInit {
   usernameDuplicated = false;
   passwordsDuplicated = true;
   registerSuccess = false;
+  today : Date;
 
   formRegistro = new FormGroup({
     username: new FormControl('',
@@ -23,7 +24,7 @@ export class RegistroComponent implements OnInit {
       [Validators.required]),
     email: new FormControl('',
       [Validators.required, Validators.email]),
-    birthdate: new FormControl('2018-11-24')
+    birthdate: new FormControl('')
   });
 
   constructor(private regConex: RegistroService) {
@@ -35,32 +36,26 @@ export class RegistroComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(formRegistroSubmitted: FormGroup) {
-    console.log('Has pulsado el botón de ENVIAR');
     this.user.username = formRegistroSubmitted.get('username').value;
     this.user.password = formRegistroSubmitted.get('password').value;
     this.user.passwordRepeated = formRegistroSubmitted.get('passwordRepeated').value;
     this.user.email = formRegistroSubmitted.get('email').value;
     this.user.birthdate = formRegistroSubmitted.get('birthdate').value;
-
-    console.log(this.user.birthdate, 'BIRTHDATE');
-
+    const dateBirthdate = new Date(this.user.birthdate);
+    this.user.birthdate = dateBirthdate.getTime();
     this.checkPasswords(this.user.password, this.user.passwordRepeated);
-    console.log(this.usernameDuplicated, 'Usuerio duplicado?');
-    console.log(this.passwordsDuplicated, 'Passwords iguales?');
     if (!this.usernameDuplicated && this.passwordsDuplicated) {
-      console.log('HACER POST');
-      /*this.regConex.postUser(this.user).subscribe(
+      this.regConex.postUser(this.user).subscribe(
         (response) => {
-          console.log(response, 'RESPUESTA');
+          console.log(response, 'RESPUESTA REGISTER');
         },
         (error) => {
-          console.log(error, 'ERROR');
+          console.log(error, 'ERROR REGISTER');
         }
-      );*/
+      );
       formRegistroSubmitted.reset();
       this.registerSuccess = true;
     } else {
-      console.log('NO HACER POST');
       this.registerSuccess = false;
     }
   }
@@ -69,11 +64,11 @@ export class RegistroComponent implements OnInit {
     this.registerSuccess = false;
     this.regConex.getAnUser(formRegistro.get('username').value).subscribe(
       (response) => {
-          console.log(response, 'RESPUESTA');
+          console.log(response, 'RESPUESTA CHECKUSER');
           this.usernameDuplicated = true;
       },
       (error) => {
-        console.log(error, 'ERROR');
+        console.log(error, 'ERROR CHECKUSER');
         this.usernameDuplicated = false;
       }
     );
@@ -86,15 +81,4 @@ export class RegistroComponent implements OnInit {
       this.passwordsDuplicated = false;
     }
   }
-
-  /*addUser(user) {
-    this.regConex.postUser(user).subscribe(
-      (response) => {
-        console.log(response, 'RESPUESTA');
-      },
-      (error) => {
-        console.log(error, 'ERROR');
-      }
-    );
-  }*/
 }
