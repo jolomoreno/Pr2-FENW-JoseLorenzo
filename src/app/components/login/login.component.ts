@@ -37,22 +37,20 @@ export class LoginComponent implements OnInit {
     this.login.username = formLogin.get('username').value;
     this.login.password = formLogin.get('password').value;
 
-    this.loginMethod(this.login.username, this.login.password);
 
-    console.log('PASA POR AQUI 2');
 
-    if (this.logConex.loggedIn) {
-      console.log('SUCCESS LOGIN');
+    this.logConex.doLogin(this.login.username, this.login.password) .subscribe(
+    response => {
+      console.log(response, 'TOKEN');
+      if (response) {
+        sessionStorage.setItem('token', response.toString());
+      }
       this.router.navigate(['']);
-    } else {
+    },
+    error => {
+      console.log(error, 'ERROR');
       this.loginIncorrect = true;
-    }
+    });
   }
 
-  loginMethod(username, password) {
-    console.log(username, 'USERNAME-SUBMIT');
-    console.log(password, 'PASSWORD-SUBMIT');
-    this.logConex.doLogin(username, password);
-    console.log('PASA POR AQUI 1');
-  }
 }

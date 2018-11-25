@@ -12,16 +12,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   doLogin(username, password) {
-    return this.http.get(this.baseurl + '/users/login?username=' + username + '&password=' + password, {observe: 'response'})
-      .subscribe(
-        response => {
-          this.bearerToken = response.headers.get('Authorization');
-          console.log(this.bearerToken, 'TOKEN');
-          sessionStorage.setItem('token', this.bearerToken);
-      },
-        error => {
-          console.log(error, 'ERROR');
-      });
+    return this.http.get(this.baseurl + '/users/login?username=' + username + '&password=' + password);
   }
 
   logout() {
